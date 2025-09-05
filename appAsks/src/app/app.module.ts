@@ -8,6 +8,7 @@ import { HeaderComponent } from './000_core/header/header.component';
 import { FooterComponent } from './000_core/footer/footer.component';
 import { QuestionType01Component } from './010_question/question-type01/question-type01.component';
 import { ThemaComponent } from './010_question/thema/thema.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ThemaComponent } from './010_question/thema/thema.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
