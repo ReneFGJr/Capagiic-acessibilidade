@@ -87,10 +87,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "appAsks:build:production"
+              "browserTarget": "appAsks:build:production"
             },
             "development": {
-              "buildTarget": "appAsks:build:development"
+              "browserTarget": "appAsks:build:development"
             }
           },
           "defaultConfiguration": "development"
