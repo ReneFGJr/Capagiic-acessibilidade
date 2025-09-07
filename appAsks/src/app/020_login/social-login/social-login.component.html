@@ -1,0 +1,90 @@
+<!-- login.component.html -->
+
+<div class="container mt-5 mb-5">
+<div class="row">
+  <div class="card shadow p-4 col-md-6">
+    <h3 class="mb-3 text-center">Identificação do Usuário</h3>
+
+    <!-- Passo 1: Email -->
+    <form *ngIf="step === 'email'" (ngSubmit)="checkEmail()" [formGroup]="form">
+      <div class="mb-3">
+        <label class="form-label">E-mail</label>
+        <input type="email" class="form-control" formControlName="email" required />
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Continuar</button>
+    </form>
+
+    <!-- Passo 2: Senha -->
+    <form *ngIf="step === 'password'" (ngSubmit)="login()" [formGroup]="form">
+      <div class="mb-3">
+        <label class="form-label">E-mail</label>
+        <input type="email" class="form-control" formControlName="email" required />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Senha</label>
+        <input type="password" class="form-control" formControlName="password" required />
+      </div>
+      <button type="submit" class="btn btn-success w-100">Entrar</button>
+      <a class="mt-2 link" (click)="step='email'">Trocar de usuário</a> |
+      <a class="mt-2 ms-2 link" (click)="step='validate'">Esqueci minha senha</a>
+    </form>
+
+    <!-- Passo X: validate -->
+    <form *ngIf="step === 'validate'" (ngSubmit)="login()" [formGroup]="form">
+      <div class="mb-3">
+        <label class="form-label">E-mail</label>
+        <input type="email" class="form-control" formControlName="email" required />
+      </div>
+      <a class="mt-2 link" (click)="step='email'">Trocar de usuário</a> |
+      <a class="mt-2 ms-2 link" (click)="step='validate'">Enviar código de validação (email)</a>
+    </form>
+
+    <!-- Passo 3: Cadastro -->
+    <form *ngIf="step === 'register'" (ngSubmit)="register()" [formGroup]="form">
+      <div class="mb-3">
+        <label class="form-label">E-mail</label>
+        <input type="email" class="form-control" formControlName="email" required/>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Nome completo</label>
+        <input type="text" class="form-control" formControlName="fullname" required />
+      </div>
+      <button type="submit" class="btn btn-warning w-100">Cadastrar</button>
+    </form>
+
+    <!-- Passo 4: Code -->
+    <form *ngIf="step === 'code'" (ngSubmit)="codeValidade()" [formGroup]="form">
+      <div class="mb-3">
+        <label class="form-label">E-mail</label>
+        <input type="email" class="form-control" formControlName="email" required/>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Nome completo</label>
+        <input type="text" class="form-control" formControlName="fullname" required />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Informe o código recebido em seu e-mail</label>
+        <input type="text" class="form-control" formControlName="code" required />
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100">Validar</button>
+    </form>
+
+    <div class="alert alert-danger text-center mt-3" *ngIf="message">
+      {{ message }}
+    </div>
+
+    <!-- FIM -->
+    <div *ngIf="step === 'done'" class="alert alert-info text-center">
+      Obrigado! O fluxo foi concluído.
+    </div>
+  </div>
+  <div class="p-4 col-md-6">
+    <h3>Sobre o cadastro</h3>
+  </div>
+</div>
+
+</div>

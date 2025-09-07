@@ -1,0 +1,15 @@
+  .xdiv {
+    min-height: 50vh;                /* ocupa a altura total da tela */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;           /* garante que a imagem cubra toda a tela */
+    background-color: #be6868;
+    background-image: url('/assets/background/background.png');
+    font-family: Arial, sans-serif;
+  }
+
+  .write {
+    background-color: rgba(0, 0, 0, 0.5); /* fundo translúcido para dar contraste */
+    border-radius: 10px;
+    color: #fff;
+  }
