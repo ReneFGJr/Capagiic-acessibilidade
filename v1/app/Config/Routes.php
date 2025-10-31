@@ -7,6 +7,9 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'Home::index');
 
+$routes->get('/places', 'Places::index');
+$routes->post('/places/save', 'Places::save');
+
 $routes->group('api', function ($routes) {
     $routes->get('users/(:alpha)', 'Api\Users::index/$1');
     $routes->post('users/(:alpha)/', 'Api\Users::index/$1');
