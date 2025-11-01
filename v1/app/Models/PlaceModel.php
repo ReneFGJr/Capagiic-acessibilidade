@@ -20,7 +20,8 @@ class PlaceModel extends Model
         'pl_longitude',
         'pl_category',
         'pl_subcategory',
-        'pl_description'
+        'pl_description',
+        'pl_anon_id'
     ];
 
     protected $useTimestamps = true;

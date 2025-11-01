@@ -7,8 +7,27 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'Home::index');
 
-$routes->get('/places', 'Places::index');
-$routes->post('/places/save', 'Places::save');
+$routes->group(
+    'places',
+    function ($routes) {
+        $routes->post('save', 'Places::save');
+        $routes->get('(:num)', 'Places::index/$1');
+        $routes->get('', 'Places::index');
+        //$routes->put('places/(:num)', 'Api\Places::update/$1');
+        //$routes->delete('places/(:num)', 'Api\Places::delete/$1');
+    });
+
+$routes->group(
+    'form',
+    function ($routes) {
+        $routes->post('save', 'Form::save');
+        $routes->get('(:num)', 'Form::index/$1');
+        $routes->get('', 'Form::index');
+        //$routes->put('places/(:num)', 'Api\Places::update/$1');
+        //$routes->delete('places/(:num)', 'Api\Places::delete/$1');
+    }
+);
+
 
 $routes->group('api', function ($routes) {
     $routes->get('users/(:alpha)', 'Api\Users::index/$1');
