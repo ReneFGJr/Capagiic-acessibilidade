@@ -8,6 +8,13 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'Home::index');
 
 $routes->group(
+    'admin',
+    function ($routes) {
+        $routes->get('prompt', 'Admin::prompt');
+    }
+);
+
+$routes->group(
     'places',
     function ($routes) {
         $routes->post('save', 'Places::save');
@@ -21,8 +28,9 @@ $routes->group(
     'form',
     function ($routes) {
         $routes->post('save', 'Form::save');
-        $routes->get('(:num)', 'Form::index/$1');
-        $routes->get('', 'Form::index');
+        $routes->get('(:num)/(:num)', 'Form::index/$1/$2');
+        $routes->get('(:num)', 'Form::index/$1/01');
+        $routes->get('', 'Form::selectForm');
         //$routes->put('places/(:num)', 'Api\Places::update/$1');
         //$routes->delete('places/(:num)', 'Api\Places::delete/$1');
     }

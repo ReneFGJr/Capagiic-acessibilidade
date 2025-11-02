@@ -6,6 +6,11 @@ class Home extends BaseController
 {
     public function index(): string
     {
-        return view('welcome_message');
+            $data['title'] = 'Autoavaliação Acessibilidade';
+            $RSP = view('templates/header', $data) .
+            view('templates/navbar', $data) .
+            view('welcome_message') .
+            view('templates/footer',$data);
+        return $RSP;
     }
 }

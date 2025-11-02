@@ -1,11 +1,11 @@
 <div class="container">
     <div class="row">
-        <div class="col-sm-3"><?= $group['etapa'] ?? '' ?></div>
+        <div class="col-sm-3"><?= $timeline ?? '' ?></div>
         <div class="col-sm-9">
 
         <div class="card-body p-4">
             <h4 class="mb-4 text-primary fw-bold">
-                <i class="bi bi-building"></i> Avaliação: Entorno do prédio
+                <i class="bi bi-building"></i> Avaliação: <?= esc($group['gr_name']) ?>
             </h4>
 
             <form action="<?= base_url('question_group/save') ?>" method="post">
@@ -14,7 +14,6 @@
                         <input type="hidden" name="id_gr[]" value="<?= esc($q['id_gr']) ?>">
 
                         <p class="fw-semibold mb-2">
-                            <span class="text-secondary small"><?= esc($q['gr_class']) ?></span><br>
                             <?= esc($q['gr_name']) ?>
                         </p>
 

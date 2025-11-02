@@ -1,0 +1,55 @@
+Crie uma imagem na horizonta sobre "Acessibilidade Arquitetônica"
+Crie como um desenho
+Descreva a imagem para um cego
+Na imagem represente, um cego, cadeirante, idoso, altista, dificuldade de mobilidade, Deficiência Múltipla
+Inclua na imagem rampas de acesso, piso tátil, elevador, banheiros acessíveis, sinalização em braile, corredores largos, portas automáticas, áreas de descanso
+Não use texto na imagem
+Use uma proporça de 6x1
+A imagem é um banner
+Aumente o contraste das cores
+------------
+Crie uma imagem na horizonta sobre "Acessibilidade de mobiliário e equipamentos"
+Crie como um desenho
+Descreva a imagem para um cego
+Na imagem represente, um cego, cadeirante, idoso, altista, dificuldade de mobilidade, Deficiência Múltipla
+Não use texto na imagem
+Use uma proporça de 6x1
+A imagem é um banner
+Aumente o contraste das cores
+-------------
+Crie uma imagem na horizonta sobre "Acessibilidade Comunicacional"
+Crie como um desenho
+Descreva a imagem para um cego
+Na imagem represente, um cego, cadeirante, idoso, altista, dificuldade de mobilidade, Deficiência Múltipla
+Não use texto na imagem
+Use uma proporça de 6x1
+A imagem é um banner
+Aumente o contraste das cores
+------------
+Crie uma imagem na horizonta sobre "Acessibilidade Instrumental"
+Crie como um desenho
+Descreva a imagem para um cego
+Na imagem represente, um cego, cadeirante, idoso, altista, dificuldade de mobilidade, Deficiência Múltipla
+Não use texto na imagem
+Use uma proporça de 6x1
+A imagem é um banner
+Aumente o contraste das cores
+Crie baseados nessas questões:
+*A instituição dispõe de equipamentos para ampliação como lupas e réguas de leitura para o atendimento de usuários com baixa visão.
+*A instituição dispõe de fotocopiadora para ampliação de textos.
+*A instituição dispõe de scanner para digitalizar documentos, a fim de realizar o reconhecimento ótico de caracteres permitindo a transcrição dos documentos para formatos acessíveis.
+*A instituição dispõe de impressora Braille acoplada aos computadores disponíveis aos servidores.
+*Quanto aos computadores destinados ao público, a instituição dispõe de quantidade suficiente com programas específicos e/ou recursos de tecnologia assistiva para que as pessoas com deficiência possam utilizá-los com autonomia.
+*Os monitores dos computadores destinados ao público apresentam tela de, pelo menos, 17,polegadas, possibilitando a configuração da tela para a obtenção de ampliações maiores do conteúdo.
+*Os monitores dos computadores apresentam tela plana.
+*Os monitores dos computadores apresentam filtro de proteção (raios catódicos) que auxiliam na digitação e leitura, diminuindo a luminosidade e melhorando o contraste do monitor.
+*Os monitores dos computadores apresentam suporte para elevação, permitindo que a tela seja posicionada na altura da linha mediana da visão do usuário.
+*Os teclados utilizados na instituição apresentam destaque nas teclas de referência (letras F e J), alfanuméricas (numeral 6) e calculadora (numeral 5).
+*A instituição dispõe de teclados alternativos para uso nos computadores destinados ao público.
+*A instituição dispõe de mouses alternativos para uso nos computadores destinados ao público.
+*Os computadores dispõem do sistema DOSVOX ou leitor de tela NVDA (ambos gratuitos) para pessoas com deficiência visual.
+*Os computadores dispõem de software de ampliação de tela para pessoas com baixa visão.
+*Os computadores dispõem de programas ou funções que possibilitam a inversão e/ou mudança no esquema de cores.
+*Os computadores dispõem de sistemas para entrada de voz (speech recognition).
+*Os computadores dispõem de Linhas Braille.
+*Os computadores dispõem de software especializado para produção de material em Braille.
