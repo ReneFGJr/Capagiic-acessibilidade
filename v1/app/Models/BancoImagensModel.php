@@ -11,9 +11,12 @@ class BancoImagensModel extends Model
     protected $allowedFields = ['img_name', 'img_descricao', 'img_url'];
     protected $returnType = 'array';
 
-    function getImage($img_id)
+    function getImageUrl($img_id)
     {
-        $dt = $this->where('id_img', $img_id)->first();
+        $dt = $this
+            ->where('id_img', $img_id)
+            ->orWhere('img_ID', $img_id)
+            ->first();
         if ($dt == null) {
             $img = 'assets/img/no-image.png';
             $desc = 'Imagem não encontrada';
@@ -21,7 +24,11 @@ class BancoImagensModel extends Model
             $img = $dt['img_url'];
             $desc = $dt['img_descricao'];
         }
-        $RSP = '<img src="' . base_url($img) . '" title="' . esc($desc) . '" class="img-fluid"/>';
-        return $RSP;
+        return ['image' => base_url($img), 'descricao' => $desc];
+    }
+    function getImage($img_id) {
+        $image = $this->getImageUrl($img_id);
+        $image = '<img src="'.$image['image'].'" alt="'.esc($image['descricao']).'" class="img-fluid rounded-2" />';
+        return $image;
     }
 }
