@@ -5,7 +5,7 @@
     }
 
     .hero {
-        background: url('<?=$image['image'];?>') center/cover no-repeat;
+        background: url('https://images.unsplash.com/photo-1526401485004-46910ecc8e51?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
         color: #fff;
         text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
         border-radius: 1rem;

@@ -73,6 +73,7 @@ class QuestionGroupModel extends Model
 
     function getPrompts()
     {
+        $Image = new \App\Models\BancoImagensModel();
         $this->updateAll();
         $dt = $this
             ->where('gr_header', 1)

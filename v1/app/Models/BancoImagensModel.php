@@ -13,17 +13,7 @@ class BancoImagensModel extends Model
 
     function getImage($img_id)
     {
-        $img = $this->getImageUrl($img_id);
-        $RSP = '<img src="' . base_url($img['image']) . '" title="' . esc($img['description']) . '" class="img-fluid"/>';
-        return $RSP;
-    }
-
-    function getImageUrl($img_id)
-    {
-        $dt = $this
-            ->where('id_img', $img_id)
-            ->Orwhere('img_name', $img_id)
-            ->first();
+        $dt = $this->where('id_img', $img_id)->first();
         if ($dt == null) {
             $img = 'assets/img/no-image.png';
             $desc = 'Imagem não encontrada';
@@ -31,6 +21,7 @@ class BancoImagensModel extends Model
             $img = $dt['img_url'];
             $desc = $dt['img_descricao'];
         }
-        return ['image' => $img, 'description' => $desc];
+        $RSP = '<img src="' . base_url($img) . '" title="' . esc($desc) . '" class="img-fluid"/>';
+        return $RSP;
     }
 }
