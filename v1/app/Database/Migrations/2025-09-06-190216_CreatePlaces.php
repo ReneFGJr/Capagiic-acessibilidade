@@ -6,8 +6,20 @@ use CodeIgniter\Database\Migration;
 
 class CreatePlaces extends Migration
 {
+    private function ensureInnoDb(string $tableName): void
+    {
+        if ($this->db->tableExists($tableName)) {
+            $this->db->query("ALTER TABLE `{$tableName}` ENGINE=InnoDB");
+        }
+    }
+
     public function up()
     {
+        if ($this->db->tableExists('places')) {
+            $this->ensureInnoDb('places');
+            return;
+        }
+
         $this->forge->addField([
             'id_pl'       => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'auto_increment' => true],
             'pl_user'     => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'null' => true],
