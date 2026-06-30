@@ -6,8 +6,18 @@ use CodeIgniter\Database\Migration;
 
 class CreateQuestionPlaceAnswers extends Migration
 {
+    private function ensureInnoDb(string $tableName): void
+    {
+        if ($this->db->tableExists($tableName)) {
+            $this->db->query("ALTER TABLE `{$tableName}` ENGINE=InnoDB");
+        }
+    }
+
     public function up()
     {
+        $this->ensureInnoDb('places');
+        $this->ensureInnoDb('question_group');
+
         $this->forge->addField([
             'id_qpa' => [
                 'type'           => 'BIGINT',
