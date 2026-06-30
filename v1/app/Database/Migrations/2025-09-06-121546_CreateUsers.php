@@ -6,8 +6,20 @@ use CodeIgniter\Database\Migration;
 
 class CreateUsers extends Migration
 {
+    private function ensureInnoDb(string $tableName): void
+    {
+        if ($this->db->tableExists($tableName)) {
+            $this->db->query("ALTER TABLE `{$tableName}` ENGINE=InnoDB");
+        }
+    }
+
     public function up()
     {
+        if ($this->db->tableExists('users')) {
+            $this->ensureInnoDb('users');
+            return;
+        }
+
         $this->forge->addField([
             'id_us'       => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'auto_increment' => true],
             'us_name'     => ['type' => 'VARCHAR', 'constraint' => 100],

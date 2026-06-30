@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 02, 2025 at 01:52 PM
+-- Generation Time: Jun 30, 2026 at 01:33 PM
 -- Server version: 9.1.0
--- PHP Version: 8.3.14
+-- PHP Version: 8.2.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `answer` (
   `q_answer` int NOT NULL,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   UNIQUE KEY `id_q` (`id_q`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -47,12 +47,12 @@ DROP TABLE IF EXISTS `banco_imagens`;
 CREATE TABLE IF NOT EXISTS `banco_imagens` (
   `id_img` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
   `img_ID` text NOT NULL,
-  `img_group` char(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `img_group` char(10) CHARACTER SET utf8mb4 NOT NULL,
   `img_name` char(100) NOT NULL,
   `img_descricao` text NOT NULL,
   `img_url` char(100) NOT NULL,
   UNIQUE KEY `id_img` (`id_img`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `banco_imagens`
@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS `cited` (
   `ct_link` text NOT NULL,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   UNIQUE KEY `id_ct` (`id_ct`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `cited`
@@ -106,7 +106,7 @@ CREATE TABLE IF NOT EXISTS `form` (
   `f_thema` int NOT NULL,
   `f_status` int NOT NULL DEFAULT '0',
   UNIQUE KEY `id_f` (`id_f`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -122,7 +122,7 @@ CREATE TABLE IF NOT EXISTS `ibge_estado` (
   `Uf` char(2) NOT NULL,
   `Regiao` int NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=MyISAM AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `ibge_estado`
@@ -170,7 +170,7 @@ CREATE TABLE IF NOT EXISTS `ibge_municipio` (
   `Nome` varchar(255) NOT NULL,
   `Uf` char(2) NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5571 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=5571 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `ibge_municipio`
@@ -5763,7 +5763,7 @@ CREATE TABLE IF NOT EXISTS `ibge_regiao` (
   `Id` int NOT NULL AUTO_INCREMENT,
   `Nome` varchar(50) NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `ibge_regiao`
@@ -5785,27 +5785,28 @@ INSERT INTO `ibge_regiao` (`Id`, `Nome`) VALUES
 DROP TABLE IF EXISTS `places`;
 CREATE TABLE IF NOT EXISTS `places` (
   `id_pl` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `pl_name` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
-  `pl_anon_id` char(40) COLLATE utf8mb4_general_ci NOT NULL,
-  `pl_address` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `pl_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `pl_anon_id` char(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `pl_address` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `pl_city` int NOT NULL,
-  `pl_bairro` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `pl_cep` varchar(10) COLLATE utf8mb4_general_ci NOT NULL,
+  `pl_bairro` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `pl_cep` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `pl_avaliations` int NOT NULL DEFAULT '0',
-  `pl_category` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `pl_subcategory` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `pl_description` text COLLATE utf8mb4_general_ci NOT NULL,
+  `pl_category` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `pl_subcategory` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `pl_description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_pl`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `places`
 --
 
 INSERT INTO `places` (`id_pl`, `pl_name`, `pl_anon_id`, `pl_address`, `pl_city`, `pl_bairro`, `pl_cep`, `pl_avaliations`, `pl_category`, `pl_subcategory`, `pl_description`, `created_at`, `updated_at`) VALUES
-(1, 'Biblioteca Central', '14ff8462b4fcda266f5a0fcbad9cf550', '', 0, '', '', 0, '', '', '', '2025-11-01 12:48:48', '2025-11-01 12:48:48');
+(1, 'Biblioteca Central', '14ff8462b4fcda266f5a0fcbad9cf550', '', 0, '', '', 0, '', '', '', '2025-11-01 12:48:48', '2025-11-01 12:48:48'),
+(2, 'CEDAP', '12878c8bdc295f0398fdab7d39199c4c', '', 0, '', '', 0, '', '', '', '2026-06-22 17:14:17', '2026-06-22 17:14:17');
 
 -- --------------------------------------------------------
 
@@ -5841,7 +5842,7 @@ CREATE TABLE IF NOT EXISTS `question` (
   `q_pt_answer_09` int NOT NULL DEFAULT '0',
   `q_multiple` int NOT NULL DEFAULT '0',
   UNIQUE KEY `id_q` (`id_q`)
-) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `question`
@@ -5879,7 +5880,7 @@ CREATE TABLE IF NOT EXISTS `question_group` (
   `gr_header` int NOT NULL DEFAULT '0',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   UNIQUE KEY `id_gr` (`id_gr`)
-) ENGINE=MyISAM AUTO_INCREMENT=363 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=363 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `question_group`
@@ -6265,7 +6266,7 @@ CREATE TABLE IF NOT EXISTS `themas` (
   `th_user` int NOT NULL,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   UNIQUE KEY `id_th` (`id_th`)
-) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `themas`
@@ -6297,11 +6298,11 @@ INSERT INTO `themas` (`id_th`, `th_name`, `th_description`, `th_icone`, `th_user
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id_us` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `us_name` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
-  `us_email` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
-  `us_password` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `us_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `us_email` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `us_password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `us_validate` int NOT NULL DEFAULT '0',
-  `us_code` varchar(6) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `us_code` varchar(6) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_us`),
