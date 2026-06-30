@@ -47,7 +47,7 @@ DROP TABLE IF EXISTS `banco_imagens`;
 CREATE TABLE IF NOT EXISTS `banco_imagens` (
   `id_img` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
   `img_ID` text NOT NULL,
-  `img_group` char(10) CHARACTER SET utf8mb4 NOT NULL,
+  `img_group` char(30) CHARACTER SET utf8mb4 NOT NULL,
   `img_name` char(100) NOT NULL,
   `img_descricao` text NOT NULL,
   `img_url` char(100) NOT NULL,
