@@ -52,6 +52,7 @@
                 <small>
                     Respondidas: <?= (int) $progress['answered'] ?>
                     | Faltam: <?= (int) $progress['missing'] ?>
+                    | Total: <?= (int) $progress['total'] ?>
                 </small>
             </a>
         </div>

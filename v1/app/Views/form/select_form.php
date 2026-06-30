@@ -24,6 +24,7 @@
                             <div class="small text-muted mt-2">
                                 Respondidas: <?= (int) $progress['answered'] ?>
                                 | Faltam: <?= (int) $progress['missing'] ?>
+                                | Total: <?= (int) $progress['total'] ?>
                             </div>
                         </div>
                     </div>
