@@ -36,6 +36,13 @@ $routes->group(
     }
 );
 
+$routes->group(
+    'reports',
+    function ($routes) {
+        $routes->get('', 'Reports::index');
+    }
+);
+
 
 $routes->group('api', function ($routes) {
     $routes->get('users/(:alpha)', 'Api\Users::index/$1');
