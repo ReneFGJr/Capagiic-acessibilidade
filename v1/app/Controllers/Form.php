@@ -77,6 +77,7 @@ class Form extends Controller
         $QuestionGroup = new \App\Models\QuestionGroupModel();
         $BancoImagens = new \App\Models\BancoImagensModel();
         $Question = new \App\Models\QuestionGroupModel();
+        $Question->updateAll();
 
         $anonId = getAnonymousSessionId();
         $userId = (int) (session()->get('user_id') ?? 0);
@@ -87,12 +88,29 @@ class Form extends Controller
         }
 
         /********************************* Grupo de Questões */
-        $groupHeader = $Question->where('gr_class', $etapa . '.00.00.0')->first();
-        $group = $Question->where('gr_class', $etapa.'.'.$subetapa.'.00.0')->first();
+        $groupHeader = $Question
+            ->where('gr_group', $gr1)
+            ->where('gr_group_sub', 0)
+            ->where('gr_header', 1)
+            ->first();
+
+        $group = $Question
+            ->where('gr_group', $gr1)
+            ->where('gr_group_sub', $gr2)
+            ->where('gr_header', 1)
+            ->first();
+
+        if (!$group) {
+            $group = $Question
+                ->where('gr_group', $gr1)
+                ->where('gr_group_sub', $gr2)
+                ->where('gr_header', 0)
+                ->first();
+        }
 
         if (!$groupHeader) {
             $groupHeader = [
-                'gr_name' => 'Grupo nao encontrado',
+                'gr_name' => '—',
                 'gr_class' => '',
                 'images' => '',
             ];
@@ -100,7 +118,7 @@ class Form extends Controller
 
         if (!$group) {
             $group = [
-                'gr_name' => 'Questionario',
+                'gr_name' => '—',
             ];
         }
 

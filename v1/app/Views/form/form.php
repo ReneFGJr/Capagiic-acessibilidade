@@ -91,12 +91,6 @@
                     </div>
                 <?php endforeach; ?>
 
-                <div class="text-end mt-4">
-                    <button type="button" class="btn btn-success px-4" disabled>
-                        <i class="bi bi-check2-circle"></i> Respostas salvas automaticamente
-                    </button>
-                </div>
-
                 <div class="d-flex justify-content-between align-items-center gap-2 mt-4 pt-3 border-top">
                     <div>
                         <?php if (!empty($navigation['prevUrl'])): ?>
