@@ -43,7 +43,7 @@
         <p class="lead">
             Instrumento para avaliação das condições de acessibilidade em prédios públicos.
         </p>
-        <a href="<?= base_url('form/') ?>" class="btn btn-light btn-lg mt-3">
+        <a href="<?= base_url('avaliations/') ?>" class="btn btn-light btn-lg mt-3" style="font-size: 3.0rem;">
             <i class="bi bi-clipboard-check"></i> Iniciar Avaliação
         </a>
     </div>

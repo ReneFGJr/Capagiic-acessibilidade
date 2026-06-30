@@ -19,7 +19,7 @@ class CreateUsers extends Migration
             'updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'
         ]);
         $this->forge->addKey('id_us', true);
-        $this->forge->createTable('users');
+        $this->forge->createTable('users', false, ['ENGINE' => 'InnoDB']);
     }
 
     public function down()

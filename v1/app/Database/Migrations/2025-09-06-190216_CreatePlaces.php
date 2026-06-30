@@ -10,6 +10,8 @@ class CreatePlaces extends Migration
     {
         $this->forge->addField([
             'id_pl'       => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'auto_increment' => true],
+            'pl_user'     => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'null' => true],
+            'pl_status'   => ['type' => 'TINYINT', 'constraint' => 1, 'default' => 0],
             'pl_name'     => ['type' => 'VARCHAR', 'constraint' => 100],
             'pl_address'     => ['type' => 'VARCHAR', 'constraint' => 100],
             'pl_city'     => ['type' => 'VARCHAR', 'constraint' => 100],
@@ -26,7 +28,9 @@ class CreatePlaces extends Migration
             'updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'
         ]);
         $this->forge->addKey('id_pl', true);
-        $this->forge->createTable('places');
+        $this->forge->addKey('pl_user');
+        $this->forge->addForeignKey('pl_user', 'users', 'id_us', 'SET NULL', 'CASCADE', 'fk_places_user');
+        $this->forge->createTable('places', false, ['ENGINE' => 'InnoDB']);
     }
 
     public function down()

@@ -9,6 +9,8 @@ class PlaceModel extends Model
     protected $table = 'places';
     protected $primaryKey = 'id_pl';
     protected $allowedFields = [
+        'pl_user',
+        'pl_status',
         'pl_name',
         'pl_address',
         'pl_city',

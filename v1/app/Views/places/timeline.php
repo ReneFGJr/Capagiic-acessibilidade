@@ -30,26 +30,39 @@
     .step small {
         color: #6c757d;
     }
+
+    .step-link {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+    }
+
+    .step-link:hover h6 {
+        text-decoration: underline;
+    }
 </style>
+
+<?php $etapaAtual = $etapaAtual ?? 1; ?>
 
 <div class="stepper">
     <div class="step <?= $etapaAtual == 1 ? 'active' : '' ?>">
-        <h6 class="mb-0 fw-bold <?= $etapaAtual == 1 ? 'text-primary' : 'text-muted' ?>">1. Informar Local</h6>
-        <small><?= $etapaAtual == 1 ? 'Etapa atual' : 'Etapa inicial' ?></small>
+        <a href="<?= base_url('places/1') ?>" class="step-link" aria-label="Abrir etapa 1 informar local">
+            <h6 class="mb-0 fw-bold <?= $etapaAtual == 1 ? 'text-primary' : 'text-muted' ?>">1. Informar Local</h6>
+            <small><?= $etapaAtual == 1 ? 'Etapa atual' : 'Etapa inicial' ?></small>
+        </a>
     </div>
 
     <div class="step <?= $etapaAtual == 2 ? 'active' : '' ?>">
-        <h6 class="mb-0 fw-bold <?= $etapaAtual == 2 ? 'text-primary' : 'text-muted' ?>">2. Informar CEP</h6>
-        <small><?= $etapaAtual == 2 ? 'Etapa atual' : 'Etapa de Localização' ?></small>
-    </div>
-
-    <div class="step <?= $etapaAtual == 3 ? 'active' : '' ?>">
-        <h6 class="mb-0 fw-bold <?= $etapaAtual == 3 ? 'text-primary' : 'text-muted' ?>">3. Editar dados</h6>
-        <small><?= $etapaAtual == 3 ? 'Etapa atual' : 'Preencha as informações' ?></small>
+        <a href="<?= base_url('places/2') ?>" class="step-link" aria-label="Abrir etapa 2 informar CEP">
+            <h6 class="mb-0 fw-bold <?= $etapaAtual == 2 ? 'text-primary' : 'text-muted' ?>">2. Informar CEP</h6>
+            <small><?= $etapaAtual == 2 ? 'Etapa atual' : 'Etapa de Localização' ?></small>
+        </a>
     </div>
 
     <div class="step <?= $etapaAtual == 4 ? 'active' : '' ?>">
-        <h6 class="mb-0 fw-bold <?= $etapaAtual == 4 ? 'text-primary' : 'text-muted' ?>">4. Confirmar endereço</h6>
-        <small><?= $etapaAtual == 4 ? 'Etapa atual' : 'Revise antes de enviar' ?></small>
+        <a href="<?= base_url('places/4') ?>" class="step-link" aria-label="Abrir etapa 3 confirmar endereco">
+            <h6 class="mb-0 fw-bold <?= $etapaAtual == 4 ? 'text-primary' : 'text-muted' ?>">3. Confirmar endereço</h6>
+            <small><?= $etapaAtual == 4 ? 'Etapa atual' : 'Revise antes de enviar' ?></small>
+        </a>
     </div>
 </div>

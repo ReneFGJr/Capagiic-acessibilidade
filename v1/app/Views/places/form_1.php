@@ -1,3 +1,5 @@
+<?php $placeData = $placeData ?? []; ?>
+
 <div class="container my-5">
     <div class="row justify-content-center">
         <div class="col-md-10 col-lg-8">
@@ -31,6 +33,7 @@
                                         name="nome_local"
                                         id="nome_local"
                                         class="form-control form-control-lg shadow-sm"
+                                        value="<?= esc(old('nome_local', (string) ($placeData['pl_name'] ?? ''))) ?>"
                                         placeholder="Ex: Biblioteca Central da UFRGS"
                                         required>
                                 </div>
