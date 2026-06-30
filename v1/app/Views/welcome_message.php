@@ -58,7 +58,7 @@
                     <p class="card-text text-muted">
                         Cadastre e mantenha atualizadas as informações dos locais avaliados.
                     </p>
-                    <a href="<?= base_url('places/') ?>" class="btn btn-outline-primary">
+                    <a href="<?= base_url('avaliations/') ?>" class="btn btn-outline-primary">
                         <i class="bi bi-pencil-square"></i> Acessar
                     </a>
                 </div>

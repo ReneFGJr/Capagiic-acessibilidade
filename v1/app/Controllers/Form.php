@@ -44,7 +44,11 @@ class Form extends Controller
 
         if ($currentIndex < count($allSteps) - 1) {
             $next = $allSteps[$currentIndex + 1];
-            $nextUrl = base_url('form/' . (int) $next['gr_group'] . '/' . str_pad((string) ((int) $next['gr_group_sub']), 2, '0', STR_PAD_LEFT));
+
+            // Nao muda automaticamente para outro grupo; finaliza no fim do grupo atual.
+            if ((int) $next['gr_group'] === $gr1) {
+                $nextUrl = base_url('form/' . (int) $next['gr_group'] . '/' . str_pad((string) ((int) $next['gr_group_sub']), 2, '0', STR_PAD_LEFT));
+            }
         }
 
         return [
@@ -61,10 +65,50 @@ class Form extends Controller
         $Group = new \App\Models\QuestionGroupModel();
         $forms = $Group->getForms();
 
+        $placeModel = new PlaceModel();
+        $answerModel = new QuestionPlaceAnswerModel();
+
+        $anonId = getAnonymousSessionId();
+        $userId = (int) (session()->get('user_id') ?? 0);
+
+        $placeData = $placeModel->where('pl_anon_id', $anonId)->first();
+        if (!$placeData && $userId > 0) {
+            $placeData = $placeModel->where('pl_user', $userId)->orderBy('updated_at', 'DESC')->first();
+        }
+
+        $progressByGroup = [];
+        foreach ($forms as $form) {
+            $grGroup = (int) ($form['gr_group'] ?? 0);
+
+            $totalQuestions = $Group
+                ->where('gr_group', $grGroup)
+                ->where('gr_header', 0)
+                ->countAllResults();
+
+            $answered = 0;
+            if (!empty($placeData['id_pl']) && $totalQuestions > 0) {
+                $rows = $answerModel
+                    ->select('question_place_answers.id_gr')
+                    ->join('question_group', 'question_group.id_gr = question_place_answers.id_gr')
+                    ->where('question_place_answers.id_pl', (int) $placeData['id_pl'])
+                    ->where('question_group.gr_group', $grGroup)
+                    ->groupBy('question_place_answers.id_gr')
+                    ->findAll();
+
+                $answered = count($rows);
+            }
+
+            $progressByGroup[$grGroup] = [
+                'answered' => $answered,
+                'total' => $totalQuestions,
+                'missing' => max(0, $totalQuestions - $answered),
+            ];
+        }
+
         return
             view('templates/header', $data) .
             view('templates/navbar', $data) .
-            view('form/select_form', ['forms' => $forms]) .
+            view('form/select_form', ['forms' => $forms, 'progressByGroup' => $progressByGroup]) .
             view('templates/footer', $data);
     }
     public function index($etapa='01', $subetapa = '01')
@@ -133,9 +177,8 @@ class Form extends Controller
 
         /********************************* Perguntas do Grupo */
         $etapas = $Question->getEtapasForm($etapa, $subetapa);
-        $timeline = view('form/timeline', ['etapa' => $etapas, 'etapaAtual' => (int)$gr2]);
 
-        /********************************* Timeline */
+        /********************************* Questões da etapa atual */
         $questions = $QuestionGroup->getQuestionsByGroup($gr1, $gr2);
 
         $answersByQuestion = [];
@@ -148,6 +191,34 @@ class Form extends Controller
                 $answersByQuestion[(int) $row['id_gr']] = (string) $row['qpa_answer'];
             }
         }
+
+        /********************************* Progresso por grupo na timeline */
+        $groupProgress = [];
+        foreach ($etapas as $step) {
+            $stepSub = (int) ($step['gr_group_sub'] ?? 0);
+            $stepQuestions = $QuestionGroup->getQuestionsByGroup($gr1, $stepSub);
+            $total = count($stepQuestions);
+            $answered = 0;
+
+            foreach ($stepQuestions as $q) {
+                $idGr = (int) ($q['id_gr'] ?? 0);
+                if ($idGr > 0 && !empty($answersByQuestion[$idGr])) {
+                    $answered++;
+                }
+            }
+
+            $groupProgress[$stepSub] = [
+                'answered' => $answered,
+                'total' => $total,
+                'missing' => max(0, $total - $answered),
+            ];
+        }
+
+        $timeline = view('form/timeline', [
+            'etapa' => $etapas,
+            'etapaAtual' => (int) $gr2,
+            'groupProgress' => $groupProgress,
+        ]);
 
 
         $navigation = $this->buildNavigation($gr1, $gr2);

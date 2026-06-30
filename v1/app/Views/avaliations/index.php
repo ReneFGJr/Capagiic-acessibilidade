@@ -19,7 +19,7 @@
                             <i class="bi bi-clipboard-check"></i> Avaliacoes
                         </h4>
                         <a href="<?= base_url('places') ?>" class="btn btn-primary">
-                            <i class="bi bi-plus-circle"></i> Nova avaliacao
+                            <i class="bi bi-plus-circle"></i> Cadastrar novo lugar
                         </a>
                     </div>
 
@@ -29,7 +29,7 @@
                         </div>
                     <?php elseif (empty($places)): ?>
                         <div class="alert alert-light border mb-0">
-                            Nenhum local vinculado ao seu usuario. Clique em <strong>Nova avaliacao</strong> para cadastrar um local.
+                            Nenhum local vinculado ao seu usuario. Clique em <strong>Cadastrar novo lugar</strong> para cadastrar um local.
                         </div>
                     <?php else: ?>
                         <div class="table-responsive">

@@ -105,7 +105,7 @@
                                 Avançar <i class="bi bi-arrow-right"></i>
                             </a>
                         <?php else: ?>
-                            <a href="<?= base_url('perfil') ?>" class="btn btn-primary">
+                            <a href="<?= base_url('form') ?>" class="btn btn-primary">
                                 <i class="bi bi-check2"></i> Finalizar
                             </a>
                         <?php endif; ?>
@@ -114,6 +114,8 @@
             </form>
         </div>
     </div>
+</div>
+
 </div>
 
 <script>

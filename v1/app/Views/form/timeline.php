@@ -32,13 +32,27 @@
     }
 </style>
 
+<?php
+    $etapa = $etapa ?? [];
+    $etapaAtual = (int) ($etapaAtual ?? 1);
+    $groupProgress = $groupProgress ?? [];
+?>
+
 <div class="stepper">
     <?php foreach ($etapa as $index => $step): ?>
+        <?php
+            $stepSub = (int) ($step['gr_group_sub'] ?? ($index + 1));
+            $progress = $groupProgress[$stepSub] ?? ['answered' => 0, 'missing' => 0, 'total' => 0];
+        ?>
         <div class="step <?= ($etapaAtual == ($index + 1)) ? 'active' : '' ?>">
             <a href="<?=base_url('form/'.substr($step['gr_class'],0,2).'/'.substr($step['gr_class'],3,2))?>" class="text-decoration-none">
                 <h6 class="mb-0 fw-bold <?= ($etapaAtual == ($index + 1)) ? 'text-primary' : 'text-muted' ?>">
                     <?= ($index + 1) . '. ' . esc($step['gr_name']) ?>
                 </h6>
+                <small>
+                    Respondidas: <?= (int) $progress['answered'] ?>
+                    | Faltam: <?= (int) $progress['missing'] ?>
+                </small>
             </a>
         </div>
     <?php endforeach; ?>

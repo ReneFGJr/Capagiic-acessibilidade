@@ -63,6 +63,13 @@ $firstName = $userName !== '' ? explode(' ', $userName)[0] : 'Usuário';
           </a>
         </li>
 
+        <!-- Lugares -->
+        <li class="nav-item">
+          <a class="nav-link" href="<?= base_url('avaliations') ?>">
+            <i class="bi bi-geo-alt-fill me-1"></i> Lugares
+          </a>
+        </li>
+
         <!-- Sobre -->
         <li class="nav-item">
           <a class="nav-link" href="<?= base_url('about') ?>">
