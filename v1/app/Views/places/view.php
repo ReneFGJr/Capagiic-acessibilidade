@@ -1,15 +1,15 @@
-<div class="container my-5">
+<div class="container-fluid my-4 px-2 px-sm-3 px-lg-4">
     <div class="row justify-content-center">
-        <div class="col-md-10 col-lg-8">
+        <div class="col-12 col-xxl-11">
             <div class="card shadow-lg border-0 rounded-4">
-                <div class="card-body p-4">
+                <div class="card-body p-3 p-md-4 p-xl-5">
 
                     <!-- Cabeçalho -->
                     <h3 class="mb-4 text-primary fw-bold text-center">
                         <i class="bi bi-geo-alt-fill"></i> <?= esc($place['pl_name']) ?>
                     </h3>
 
-                    <div class="row g-3">
+                    <div class="row g-3 g-xl-4">
                         <!-- Categoria -->
                         <div class="col-md-6">
                             <p class="text-muted mb-1"><i class="bi bi-tag"></i> Categoria</p>

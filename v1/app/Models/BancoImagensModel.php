@@ -8,7 +8,7 @@ class BancoImagensModel extends Model
 {
     protected $table = 'banco_imagens';
     protected $primaryKey = 'id_img';
-    protected $allowedFields = ['img_name', 'img_descricao', 'img_url'];
+    protected $allowedFields = ['img_ID', 'img_group', 'img_name', 'img_descricao', 'img_url'];
     protected $returnType = 'array';
 
     function getImageUrl($img_id)

@@ -84,8 +84,19 @@ $firstName = $userName !== '' ? explode(' ', $userName)[0] : 'Usuário';
           </a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarAcessibilidade">
             <li><a class="dropdown-item" href="#" onclick="toggleContrast()">Alternar Alto Contraste</a></li>
-            <li><a class="dropdown-item" href="#" onclick="increaseFont()">Aumentar Fonte</a></li>
-            <li><a class="dropdown-item" href="#" onclick="decreaseFont()">Diminuir Fonte</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><h6 class="dropdown-header text-white-50">Tamanho da fonte</h6></li>
+            <li><a class="dropdown-item" href="#" onclick="setFontScale(100)">100%</a></li>
+            <li><a class="dropdown-item" href="#" onclick="setFontScale(125)">125%</a></li>
+            <li><a class="dropdown-item" href="#" onclick="setFontScale(150)">150%</a></li>
+            <li><a class="dropdown-item" href="#" onclick="setFontScale(175)">175%</a></li>
+            <li><a class="dropdown-item" href="#" onclick="setFontScale(200)">200%</a></li>
+            <li><a class="dropdown-item" href="#" onclick="setFontScale(225)">225%</a></li>
+            <li><a class="dropdown-item" href="#" onclick="setFontScale(250)">250%</a></li>
+            <li><a class="dropdown-item" href="#" onclick="setFontScale(275)">275%</a></li>
+            <li><a class="dropdown-item" href="#" onclick="setFontScale(300)">300%</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#" onclick="resetFontScale()">Fonte padrão</a></li>
           </ul>
         </li>
 
@@ -123,13 +134,54 @@ function toggleContrast() {
   document.body.classList.toggle('high-contrast');
 }
 
-function increaseFont() {
-  document.body.style.fontSize = 'larger';
+function setCookie(name, value, days) {
+  const expires = new Date();
+  expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
+  document.cookie = name + '=' + encodeURIComponent(value) + '; expires=' + expires.toUTCString() + '; path=/; SameSite=Lax';
 }
 
-function decreaseFont() {
-  document.body.style.fontSize = 'smaller';
+function getCookie(name) {
+  const prefix = name + '=';
+  const parts = document.cookie ? document.cookie.split('; ') : [];
+
+  for (const part of parts) {
+    if (part.indexOf(prefix) === 0) {
+      return decodeURIComponent(part.substring(prefix.length));
+    }
+  }
+
+  return null;
 }
+
+function applyFontScale(scale) {
+  const parsedScale = Number(scale);
+  const safeScale = Number.isFinite(parsedScale) ? Math.min(300, Math.max(100, parsedScale)) : 100;
+  document.documentElement.style.fontSize = safeScale + '%';
+  return safeScale;
+}
+
+function setFontScale(scale) {
+  const safeScale = applyFontScale(scale);
+  setCookie('capagiic_font_scale', String(safeScale), 365);
+}
+
+function resetFontScale() {
+  applyFontScale(100);
+  setCookie('capagiic_font_scale', '100', 365);
+}
+
+function loadSavedFontScale() {
+  const savedScale = getCookie('capagiic_font_scale');
+
+  if (savedScale === null || savedScale === '') {
+    applyFontScale(100);
+    return;
+  }
+
+  applyFontScale(savedScale);
+}
+
+loadSavedFontScale();
 </script>
 
 <style>
@@ -172,6 +224,11 @@ function decreaseFont() {
 
   .cap-navbar .dropdown-divider {
     border-top-color: rgba(255, 255, 255, 0.35);
+  }
+
+  .cap-navbar .dropdown-header {
+    font-weight: 700;
+    letter-spacing: 0.03em;
   }
 
   .cap-navbar .navbar-toggler {

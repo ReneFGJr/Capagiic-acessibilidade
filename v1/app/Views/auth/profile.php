@@ -1,8 +1,8 @@
-<div class="container my-5">
+<div class="container-fluid my-4 px-2 px-sm-3 px-lg-4">
   <div class="row justify-content-center">
-    <div class="col-md-11 col-lg-9">
+    <div class="col-12 col-xxl-11">
       <div class="card border-0 shadow rounded-4">
-        <div class="card-body p-4">
+        <div class="card-body p-3 p-md-4 p-xl-5">
           <h4 class="text-primary fw-bold mb-4"><i class="bi bi-person-badge"></i> Meu Perfil</h4>
 
           <?php
@@ -16,7 +16,7 @@
 
           <hr class="my-4">
 
-          <div class="d-flex justify-content-between align-items-center mb-3">
+          <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2 mb-3">
             <h5 class="mb-0 text-primary fw-semibold"><i class="bi bi-geo-alt"></i> Meus Locais</h5>
             <a href="<?= base_url('places') ?>" class="btn btn-sm btn-primary">Novo local</a>
           </div>

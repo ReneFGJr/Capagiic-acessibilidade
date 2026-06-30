@@ -7,8 +7,12 @@ use CodeIgniter\Controller;
 
 class Avaliations extends Controller
 {
-    public function index(): string
+    public function index()
     {
+        if (!(bool) (session()->get('isLoggedIn') ?? false)) {
+            return redirect()->to('/login')->with('error', 'Faça login para acessar suas avaliações.');
+        }
+
         $data['title'] = 'Avaliacoes - CAPAGIIC';
 
         $userId = (int) (session()->get('user_id') ?? 0);

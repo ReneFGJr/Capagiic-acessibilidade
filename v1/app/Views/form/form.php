@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid my-4 px-2 px-sm-3 px-lg-4">
     <?php
         $group = $group ?? ['gr_name' => 'Questionario'];
         $questions = $questions ?? [];
@@ -17,18 +17,18 @@
     ?>
 
     <div class="card border-0 shadow-sm rounded-4 mb-4">
-        <div class="card-body p-3 p-md-4">
+        <div class="card-body p-3 p-md-4 p-xl-5">
             <h5 class="text-primary fw-bold mb-3">
                 <i class="bi bi-geo-alt-fill"></i> Local em avaliacao
             </h5>
 
             <?php if (!empty($placeData['id_pl'])): ?>
-                <div class="row g-2">
-                    <div class="col-md-6"><strong>Local:</strong> <?= esc((string) ($placeData['pl_name'] ?? '-')) ?></div>
-                    <div class="col-md-6"><strong>Status:</strong> <?= esc($placeStatus) ?></div>
-                    <div class="col-md-6"><strong>Endereco:</strong> <?= esc((string) ($placeData['pl_address'] ?? '-')) ?></div>
-                    <div class="col-md-3"><strong>Bairro:</strong> <?= esc((string) ($placeData['pl_bairro'] ?? '-')) ?></div>
-                    <div class="col-md-3"><strong>CEP:</strong> <?= esc((string) $placeCep) ?></div>
+                <div class="row g-2 g-lg-3">
+                    <div class="col-12 col-md-6"><strong>Local:</strong> <?= esc((string) ($placeData['pl_name'] ?? '-')) ?></div>
+                    <div class="col-12 col-md-6"><strong>Status:</strong> <?= esc($placeStatus) ?></div>
+                    <div class="col-12 col-md-6"><strong>Endereco:</strong> <?= esc((string) ($placeData['pl_address'] ?? '-')) ?></div>
+                    <div class="col-12 col-md-3"><strong>Bairro:</strong> <?= esc((string) ($placeData['pl_bairro'] ?? '-')) ?></div>
+                    <div class="col-12 col-md-3"><strong>CEP:</strong> <?= esc((string) $placeCep) ?></div>
                 </div>
             <?php else: ?>
                 <div class="alert alert-warning mb-0">
@@ -38,11 +38,12 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-sm-3"><?= $timeline ?? '' ?></div>
-        <div class="col-sm-9">
+    <div class="row g-4">
+        <div class="col-12 col-xl-3"><?= $timeline ?? '' ?></div>
+        <div class="col-12 col-xl-9">
 
-        <div class="card-body p-4">
+        <div class="card border-0 shadow-sm rounded-4">
+        <div class="card-body p-3 p-md-4 p-xl-5">
             <h4 class="mb-4 text-primary fw-bold">
                 <i class="bi bi-building"></i> Avaliação: <?= esc($group['gr_name']) ?>
             </h4>
@@ -91,7 +92,7 @@
                     </div>
                 <?php endforeach; ?>
 
-                <div class="d-flex justify-content-between align-items-center gap-2 mt-4 pt-3 border-top">
+                <div class="d-flex flex-column flex-md-row justify-content-between align-items-stretch align-items-md-center gap-3 mt-4 pt-3 border-top">
                     <div>
                         <?php if (!empty($navigation['prevUrl'])): ?>
                             <a href="<?= esc((string) $navigation['prevUrl']) ?>" class="btn btn-outline-secondary">
@@ -112,6 +113,7 @@
                     </div>
                 </div>
             </form>
+        </div>
         </div>
     </div>
 </div>

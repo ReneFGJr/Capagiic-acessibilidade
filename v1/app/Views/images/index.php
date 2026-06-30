@@ -2,16 +2,38 @@
     $groups = $groups ?? [];
     $activeGroup = $activeGroup ?? '';
     $images = $images ?? [];
+    $isLoggedIn = (bool) ($isLoggedIn ?? false);
+    $flashMsg = session()->getFlashdata('msg');
+    $flashError = session()->getFlashdata('error');
 ?>
 
-<div class="container my-5">
+<div class="container-fluid my-4 px-2 px-sm-3 px-lg-4">
     <div class="row justify-content-center">
-        <div class="col-lg-11">
+        <div class="col-12 col-xxl-11">
             <div class="card border-0 shadow rounded-4">
-                <div class="card-body p-4 p-md-5">
-                    <h3 class="text-primary fw-bold mb-4">
-                        <i class="bi bi-images"></i> Banco de Imagens por Categoria
-                    </h3>
+                <div class="card-body p-3 p-md-4 p-xl-5">
+                    <div class="d-flex flex-column flex-md-row justify-content-between align-items-stretch align-items-md-center gap-3 mb-4">
+                        <h3 class="text-primary fw-bold mb-0">
+                            <i class="bi bi-images"></i> Banco de Imagens por Categoria
+                        </h3>
+                        <?php if ($isLoggedIn): ?>
+                            <a href="<?= base_url('images/upload') ?>" class="btn btn-primary">
+                                <i class="bi bi-cloud-arrow-up"></i> Enviar imagem
+                            </a>
+                        <?php endif; ?>
+                    </div>
+
+                    <?php if ($flashMsg): ?>
+                        <div class="alert alert-success">
+                            <?= esc((string) $flashMsg) ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if ($flashError): ?>
+                        <div class="alert alert-danger">
+                            <?= esc((string) $flashError) ?>
+                        </div>
+                    <?php endif; ?>
 
                     <?php if (empty($groups)): ?>
                         <div class="alert alert-warning mb-0">
@@ -41,7 +63,7 @@
                         <?php else: ?>
                             <div class="row g-4">
                                 <?php foreach ($images as $img): ?>
-                                    <div class="col-md-6 col-lg-4">
+                                    <div class="col-12 col-md-6 col-xl-4 col-xxl-3">
                                         <div class="card h-100 border-1 shadow-sm rounded-3">
                                             <img
                                                 src="<?= base_url((string) ($img['img_url'] ?? '')) ?>"
@@ -71,3 +93,13 @@
         </div>
     </div>
 </div>
+
+<style>
+    .container-fluid {
+        max-width: 100%;
+    }
+
+    .card-img-top {
+        width: 100%;
+    }
+</style>

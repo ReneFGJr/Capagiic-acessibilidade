@@ -9,12 +9,12 @@
     ];
 ?>
 
-<div class="container my-5">
+<div class="container-fluid my-4 px-2 px-sm-3 px-lg-4">
     <div class="row justify-content-center">
-        <div class="col-md-11 col-lg-10">
+        <div class="col-12 col-xxl-11">
             <div class="card border-0 shadow rounded-4">
-                <div class="card-body p-4 p-md-5">
-                    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4">
+                <div class="card-body p-3 p-md-4 p-xl-5">
+                    <div class="d-flex flex-column flex-md-row justify-content-between align-items-stretch align-items-md-center gap-3 mb-4">
                         <h4 class="text-primary fw-bold mb-0">
                             <i class="bi bi-clipboard-check"></i> Avaliacoes
                         </h4>
@@ -33,7 +33,7 @@
                         </div>
                     <?php else: ?>
                         <div class="table-responsive">
-                            <table class="table table-striped align-middle">
+                            <table class="table table-striped align-middle w-100">
                                 <thead>
                                     <tr>
                                         <th>Local</th>

@@ -13,23 +13,23 @@
     $storedBairro = (string) ($placeData['pl_bairro'] ?? '');
 ?>
 
-<div class="container my-5">
+<div class="container-fluid my-4 px-2 px-sm-3 px-lg-4">
     <div class="row justify-content-center">
-        <div class="col-md-10 col-lg-8">
+        <div class="col-12 col-xxl-11">
             <div class="card shadow-lg border-0 rounded-4">
-                <div class="card-body p-4">
+                <div class="card-body p-3 p-md-4 p-xl-5">
                     <h4 class="mb-4 text-primary fw-bold text-center">
                         <i class="bi bi-geo-alt-fill"></i> Cadastro de Local de Avaliação
                     </h4>
 
                     <div class="row">
                         <!-- 🔹 Timeline lateral -->
-                        <div class="col-md-4">
+                        <div class="col-12 col-lg-4 col-xxl-3 mb-4 mb-lg-0">
                             <?= view('places/timeline', ['etapaAtual' => 2]) ?>
                         </div>
 
                         <!-- 🔹 Conteúdo da etapa -->
-                        <div class="col-md-8">
+                        <div class="col-12 col-lg-8 col-xxl-9">
                             <p class="text-muted">
                                 Para cadastrar um local, é necessário informar o <strong>CEP</strong> do endereço.
                                 Esses dados são importantes para localizar o local no mapa e facilitar a busca por outros usuários.

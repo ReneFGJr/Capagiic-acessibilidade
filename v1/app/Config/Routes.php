@@ -47,6 +47,8 @@ $routes->group(
 
 $routes->get('avaliations', 'Avaliations::index');
 $routes->get('images', 'Images::index');
+$routes->get('images/upload', 'Images::upload');
+$routes->post('images/upload', 'Images::storeUpload');
 
 $routes->get('about', 'About::index');
 
