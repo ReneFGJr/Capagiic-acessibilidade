@@ -2,7 +2,7 @@
     <?php $forms = $forms ?? []; ?>
     <?php $progressByGroup = $progressByGroup ?? []; ?>
     <div class="row g-4 justify-content-center">
-        <div class="col-12 col-sm-6 col-lg-4 col-xxl-3">
+        <div class="col-12 col-sm-12 col-lg-12 col-xxl-12">
             <h1>Acessibilidade</h1>
         </div>
 
