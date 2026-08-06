@@ -113,6 +113,10 @@ class Form extends Controller
     }
     public function index($etapa='01', $subetapa = '01')
     {
+        if (!(bool) (session()->get('isLoggedIn') ?? false)) {
+            return redirect()->to('/');
+        }
+
         $gr1 = round($etapa);
         $gr2 = round($subetapa);
 
