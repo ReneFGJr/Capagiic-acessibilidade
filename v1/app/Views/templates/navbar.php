@@ -84,6 +84,8 @@ $firstName = $userName !== '' ? explode(' ', $userName)[0] : 'Usuário';
             <i class="bi bi-eye me-1"></i> Acessibilidade
           </a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarAcessibilidade">
+            <li><a class="dropdown-item" href="<?= base_url('acessibilidade') ?>">Sobre a acessibilidade do site</a></li>
+            <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#" onclick="toggleContrast()">Alternar Alto Contraste</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><h6 class="dropdown-header text-white-50">Tamanho da fonte</h6></li>

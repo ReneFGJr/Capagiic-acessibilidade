@@ -50,6 +50,9 @@ $routes->get('images', 'Images::index');
 $routes->get('images/upload', 'Images::upload');
 $routes->post('images/upload', 'Images::storeUpload');
 
+$routes->get('acessibilidade', 'Acessibilidade::index');
+$routes->post('acessibilidade/reportar', 'Acessibilidade::reportar');
+
 $routes->get('about', 'About::index');
 
 $routes->group('auth', function ($routes) {
