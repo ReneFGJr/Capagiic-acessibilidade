@@ -4,21 +4,24 @@
     <div class="row g-4 justify-content-center">
         <?php foreach ($forms as $index => $step): ?>
             <?php
-                $grGroup = (int) ($step['gr_group'] ?? 0);
-                $progress = $progressByGroup[$grGroup] ?? ['answered' => 0, 'missing' => 0, 'total' => 0];
-                $isCompleted = (int) $progress['total'] > 0 && (int) $progress['missing'] === 0;
+            $grGroup = (int) ($step['gr_group'] ?? 0);
+            $progress = $progressByGroup[$grGroup] ?? ['answered' => 0, 'missing' => 0, 'total' => 0];
+            $isCompleted = (int) $progress['total'] > 0 && (int) $progress['missing'] === 0;
             ?>
+            <div class="col-12 col-sm-6 col-lg-4 col-xxl-3">
+            <h1>Acessibilidade</h1>
+            </div>
             <div class="col-12 col-sm-6 col-lg-4 col-xxl-3">
                 <div class="card shadow-sm border-2 h-100 rounded-4 hover-card text-center <?= $isCompleted ? 'group-complete' : '' ?>">
                     <div class="">
                         <div class="mb-3">
                             <?= $step['image']; ?>
                         </div>
-                        <h5 class="card-title text-primary fw-semibold mb-3">
+                        <h2 class="card-title text-primary fw-semibold mb-3">
                             <?= esc($step['gr_name']); ?>
-                        </h5>
+                        </h2>
                         <div class="p-3 p-md-4">
-                            <a href="<?=base_url('form/'.substr($step['gr_class'], 0, 2).'/01'); ?>" class="btn btn-outline-primary w-100 fw-semibold">
+                            <a href="<?= base_url('form/' . substr($step['gr_class'], 0, 2) . '/01'); ?>" class="btn btn-outline-primary w-100 fw-semibold">
                                 <i class="bi bi-clipboard-check"></i> Selecionar
                             </a>
                             <div class="small text-muted mt-2">
