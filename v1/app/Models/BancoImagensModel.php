@@ -28,7 +28,8 @@ class BancoImagensModel extends Model
     }
     function getImage($img_id) {
         $image = $this->getImageUrl($img_id);
-        $image = '<img src="'.$image['image'].'" alt="'.esc($image['descricao']).'" class="img-fluid rounded-2" />';
+        $descricao = esc($image['descricao']);
+        $image = '<img src="'.$image['image'].'" alt="'.$descricao.'" title="'.$descricao.'" class="img-fluid rounded-2" />';
         return $image;
     }
 }
