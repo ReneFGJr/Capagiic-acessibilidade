@@ -33,6 +33,7 @@ $firstName = $userName !== '' ? explode(' ', $userName)[0] : 'Usuário';
 ?>
 
 <!-- 🔹 Navbar CAPAGIIC - Acessibilidade -->
+<a class="skip-link" href="#conteudo">Pular para o conteúdo principal</a>
 <nav class="navbar navbar-expand-lg navbar-dark cap-navbar shadow-sm">
   <div class="container-fluid">
     <!-- Logo / Nome do sistema -->
@@ -185,6 +186,28 @@ loadSavedFontScale();
 </script>
 
 <style>
+  .skip-link {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    z-index: 1050;
+    padding: 0.75rem 1rem;
+    background: #ffffff;
+    color: #0d2f53;
+    font-weight: 700;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.18);
+    transform: translateY(-200%);
+    transition: transform 0.2s ease;
+  }
+
+  .skip-link:focus,
+  .skip-link:focus-visible {
+    transform: translateY(0);
+    outline: 3px solid #ffd54f;
+    outline-offset: 3px;
+  }
+
   .cap-navbar {
     background-color: #0d2f53 !important;
   }
