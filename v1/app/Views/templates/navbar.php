@@ -433,6 +433,19 @@ loadSavedFontScale();
     border: 2px solid #ff0 !important;
   }
 
+  .high-contrast .btn-check:checked + .btn {
+    background-color: #ff0 !important;
+    color: #000 !important;
+    border-color: #fff !important;
+    font-weight: 700;
+    box-shadow: 0 0 0 3px #fff !important;
+  }
+
+  .high-contrast .btn-check:focus-visible + .btn {
+    outline: 3px solid #fff !important;
+    outline-offset: 2px;
+  }
+
   .high-contrast .btn:hover,
   .high-contrast .btn:focus-visible {
     background-color: #ff0 !important;
