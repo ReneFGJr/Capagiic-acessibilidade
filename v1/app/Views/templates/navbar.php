@@ -134,7 +134,13 @@ $firstName = $userName !== '' ? explode(' ', $userName)[0] : 'Usuário';
 <!-- 🔹 Funções JS simples para acessibilidade -->
 <script>
 function toggleContrast() {
-  document.body.classList.toggle('high-contrast');
+  const nextState = !document.body.classList.contains('high-contrast');
+  applyContrastMode(nextState);
+  setCookie('capagiic_high_contrast', nextState ? '1' : '0', 365);
+}
+
+function applyContrastMode(enabled) {
+  document.body.classList.toggle('high-contrast', Boolean(enabled));
 }
 
 function setCookie(name, value, days) {
@@ -154,6 +160,11 @@ function getCookie(name) {
   }
 
   return null;
+}
+
+function loadSavedContrastMode() {
+  const savedContrast = getCookie('capagiic_high_contrast');
+  applyContrastMode(savedContrast === '1');
 }
 
 function applyFontScale(scale) {
@@ -184,6 +195,7 @@ function loadSavedFontScale() {
   applyFontScale(savedScale);
 }
 
+loadSavedContrastMode();
 loadSavedFontScale();
 </script>
 
@@ -308,6 +320,7 @@ loadSavedFontScale();
   .high-contrast .dropdown-menu,
   .high-contrast .card,
   .high-contrast .hero,
+  .high-contrast .bg-light,
   .high-contrast .modal-content,
   .high-contrast .offcanvas,
   .high-contrast .list-group-item,
@@ -315,6 +328,14 @@ loadSavedFontScale();
   .high-contrast .table > :not(caption) > * > * {
     background-color: #000 !important;
     color: #fff !important;
+    border-color: #fff !important;
+  }
+
+  .high-contrast .border,
+  .high-contrast .border-top,
+  .high-contrast .border-end,
+  .high-contrast .border-bottom,
+  .high-contrast .border-start {
     border-color: #fff !important;
   }
 
