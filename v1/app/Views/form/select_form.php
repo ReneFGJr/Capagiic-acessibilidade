@@ -2,15 +2,16 @@
     <?php $forms = $forms ?? []; ?>
     <?php $progressByGroup = $progressByGroup ?? []; ?>
     <div class="row g-4 justify-content-center">
+        <div class="col-12 col-sm-6 col-lg-4 col-xxl-3">
+            <h1>Acessibilidade</h1>
+        </div>
+
         <?php foreach ($forms as $index => $step): ?>
             <?php
             $grGroup = (int) ($step['gr_group'] ?? 0);
             $progress = $progressByGroup[$grGroup] ?? ['answered' => 0, 'missing' => 0, 'total' => 0];
             $isCompleted = (int) $progress['total'] > 0 && (int) $progress['missing'] === 0;
             ?>
-            <div class="col-12 col-sm-6 col-lg-4 col-xxl-3">
-            <h1>Acessibilidade</h1>
-            </div>
             <div class="col-12 col-sm-6 col-lg-4 col-xxl-3">
                 <div class="card shadow-sm border-2 h-100 rounded-4 hover-card text-center <?= $isCompleted ? 'group-complete' : '' ?>">
                     <div class="">
