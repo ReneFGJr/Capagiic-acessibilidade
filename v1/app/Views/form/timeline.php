@@ -46,9 +46,9 @@
         ?>
         <div class="step <?= ($etapaAtual == ($index + 1)) ? 'active' : '' ?>">
             <a href="<?=base_url('form/'.substr($step['gr_class'],0,2).'/'.substr($step['gr_class'],3,2))?>" class="text-decoration-none">
-                <h6 class="mb-0 fw-bold <?= ($etapaAtual == ($index + 1)) ? 'text-primary' : 'text-muted' ?>">
+                <h3 class="mb-0 fw-bold <?= ($etapaAtual == ($index + 1)) ? 'text-primary' : 'text-muted' ?>">
                     <?= ($index + 1) . '. ' . esc($step['gr_name']) ?>
-                </h6>
+                </h3>
                 <small>
                     Respondidas: <?= (int) $progress['answered'] ?>
                     | Faltam: <?= (int) $progress['missing'] ?>
