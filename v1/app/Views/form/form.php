@@ -18,9 +18,9 @@
 
     <div class="card border-0 shadow-sm rounded-4 mb-4">
         <div class="card-body p-3 p-md-4 p-xl-5">
-            <h5 class="text-primary fw-bold mb-3">
+            <h2 class="text-primary fw-bold mb-3">
                 <i class="bi bi-geo-alt-fill"></i> Local em avaliacao
-            </h5>
+            </h2>
 
             <?php if (!empty($placeData['id_pl'])): ?>
                 <div class="row g-2 g-lg-3">
