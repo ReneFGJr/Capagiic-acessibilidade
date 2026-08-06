@@ -3,9 +3,9 @@
     <div class="col-12 col-xxl-10">
       <div class="card border-0 shadow rounded-4">
         <div class="card-body p-3 p-md-4 p-xl-5">
-          <h2 class="text-primary fw-bold mb-3">
+          <h1 class="text-primary fw-bold mb-3">
             <i class="bi bi-info-circle"></i> Sobre o CAPAGIIC
-          </h2>
+          </h1>
 
           <p class="mb-3">
             O CAPAGIIC e um sistema de autoavaliacao de acessibilidade para apoiar o mapeamento e a melhoria continua de ambientes e servicos.

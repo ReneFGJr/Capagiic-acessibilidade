@@ -54,7 +54,7 @@
             <div class="card card-action shadow-sm border-0 text-center h-100">
                 <div class="card-body py-4">
                     <i class="bi bi-geo-alt text-primary display-5 mb-3"></i>
-                    <h5 class="card-title fw-bold">Gerenciar Locais</h5>
+                    <h2 class="card-title fw-bold">Gerenciar Locais</h2>
                     <p class="card-text text-muted">
                         Cadastre e mantenha atualizadas as informações dos locais avaliados.
                     </p>
@@ -69,7 +69,7 @@
             <div class="card card-action shadow-sm border-0 text-center h-100">
                 <div class="card-body py-4">
                     <i class="bi bi-bar-chart-line text-success display-5 mb-3"></i>
-                    <h5 class="card-title fw-bold">Relatórios e Indicadores</h5>
+                    <h2 class="card-title fw-bold">Relatórios e Indicadores</h2>
                     <p class="card-text text-muted">
                         Consulte resultados das avaliações e indicadores de acessibilidade.
                     </p>

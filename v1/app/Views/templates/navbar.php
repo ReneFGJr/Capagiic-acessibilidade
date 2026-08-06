@@ -152,6 +152,23 @@ function applyHeadingLevels(enabled) {
   syncHeadingLevels(isEnabled);
 }
 
+function scheduleHeadingLevels(enabled) {
+  if (!enabled) {
+    applyHeadingLevels(false);
+    return;
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function onHeadingLevelsReady() {
+      document.removeEventListener('DOMContentLoaded', onHeadingLevelsReady);
+      applyHeadingLevels(true);
+    });
+    return;
+  }
+
+  applyHeadingLevels(true);
+}
+
 function setCookie(name, value, days) {
   const expires = new Date();
   expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
@@ -206,7 +223,7 @@ function syncHeadingLevels(enabled) {
 
 function loadSavedHeadingLevels() {
   const savedHeadingLevels = getCookie('capagiic_header_level');
-  applyHeadingLevels(savedHeadingLevels === '1');
+  scheduleHeadingLevels(savedHeadingLevels === '1');
 }
 
 function applyFontScale(scale) {
