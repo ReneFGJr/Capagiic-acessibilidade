@@ -263,7 +263,133 @@ loadSavedFontScale();
     background-color: #000 !important;
     color: #fff !important;
   }
-  .high-contrast a, .high-contrast .nav-link {
+  .high-contrast,
+  .high-contrast body,
+  .high-contrast #conteudo {
+    background-color: #000 !important;
+    color: #fff !important;
+  }
+
+  .high-contrast *,
+  .high-contrast *::before,
+  .high-contrast *::after {
+    text-shadow: none !important;
+    box-shadow: none !important;
+  }
+
+  .high-contrast a,
+  .high-contrast .nav-link,
+  .high-contrast .navbar-brand,
+  .high-contrast .dropdown-item,
+  .high-contrast .btn-link {
     color: #ff0 !important;
+  }
+
+  .high-contrast a:hover,
+  .high-contrast a:focus-visible,
+  .high-contrast .nav-link:hover,
+  .high-contrast .nav-link:focus-visible,
+  .high-contrast .navbar-brand:hover,
+  .high-contrast .navbar-brand:focus-visible,
+  .high-contrast .dropdown-item:hover,
+  .high-contrast .dropdown-item:focus-visible,
+  .high-contrast .btn-link:hover,
+  .high-contrast .btn-link:focus-visible {
+    color: #000 !important;
+    background-color: #ff0 !important;
+    outline: 3px solid #ff0;
+    outline-offset: 2px;
+  }
+
+  .high-contrast .cap-navbar,
+  .high-contrast .cap-footer,
+  .high-contrast .dropdown-menu,
+  .high-contrast .card,
+  .high-contrast .hero,
+  .high-contrast .modal-content,
+  .high-contrast .offcanvas,
+  .high-contrast .list-group-item,
+  .high-contrast .table,
+  .high-contrast .table > :not(caption) > * > * {
+    background-color: #000 !important;
+    color: #fff !important;
+    border-color: #fff !important;
+  }
+
+  .high-contrast .text-muted,
+  .high-contrast .text-secondary,
+  .high-contrast .small,
+  .high-contrast small,
+  .high-contrast .form-text,
+  .high-contrast .card-text {
+    color: #fff !important;
+    opacity: 1 !important;
+  }
+
+  .high-contrast .btn,
+  .high-contrast .btn-primary,
+  .high-contrast .btn-secondary,
+  .high-contrast .btn-success,
+  .high-contrast .btn-danger,
+  .high-contrast .btn-warning,
+  .high-contrast .btn-info,
+  .high-contrast .btn-light,
+  .high-contrast .btn-dark,
+  .high-contrast .btn-outline-primary,
+  .high-contrast .btn-outline-secondary,
+  .high-contrast .btn-outline-success,
+  .high-contrast .btn-outline-danger,
+  .high-contrast .btn-outline-warning,
+  .high-contrast .btn-outline-info,
+  .high-contrast .btn-outline-light,
+  .high-contrast .btn-outline-dark {
+    background-color: #000 !important;
+    color: #ff0 !important;
+    border: 2px solid #ff0 !important;
+  }
+
+  .high-contrast .btn:hover,
+  .high-contrast .btn:focus-visible {
+    background-color: #ff0 !important;
+    color: #000 !important;
+    border-color: #ff0 !important;
+  }
+
+  .high-contrast .form-control,
+  .high-contrast .form-select,
+  .high-contrast .input-group-text,
+  .high-contrast .form-check-input,
+  .high-contrast .custom-control-input,
+  .high-contrast .custom-file-label {
+    background-color: #000 !important;
+    color: #fff !important;
+    border-color: #fff !important;
+  }
+
+  .high-contrast .form-control::placeholder,
+  .high-contrast .form-select,
+  .high-contrast ::placeholder {
+    color: #fff !important;
+    opacity: 1 !important;
+  }
+
+  .high-contrast .card-header,
+  .high-contrast .card-footer,
+  .high-contrast .dropdown-header,
+  .high-contrast .dropdown-divider,
+  .high-contrast hr {
+    background-color: #000 !important;
+    border-color: #fff !important;
+    color: #fff !important;
+  }
+
+  .high-contrast .badge,
+  .high-contrast .alert,
+  .high-contrast .progress,
+  .high-contrast .progress-bar,
+  .high-contrast .table-striped > tbody > tr:nth-of-type(odd) > * {
+    background-color: #000 !important;
+    color: #fff !important;
+    border-color: #fff !important;
   }
 </style>
