@@ -17,7 +17,7 @@
           <form method="post" action="<?= base_url('login') ?>">
             <div class="mb-3">
               <label for="email" class="form-label fw-semibold">Email</label>
-              <input type="email" id="email" name="email" class="form-control" value="<?= old('email') ?>" required>
+              <input type="email" id="email" name="email" class="form-control" value="<?= old('email') ?>" required autofocus>
             </div>
             <div class="mb-3">
               <label for="password" class="form-label fw-semibold">Senha</label>

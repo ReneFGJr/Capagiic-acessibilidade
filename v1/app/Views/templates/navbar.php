@@ -50,13 +50,6 @@ $firstName = $userName !== '' ? explode(' ', $userName)[0] : 'Usuário';
     <div class="collapse navbar-collapse" id="navbarCAPAGIIC">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
-        <!-- Página inicial -->
-        <li class="nav-item">
-          <a class="nav-link" href="<?= base_url('/') ?>">
-            <i class="bi bi-house-door-fill me-1"></i> Início
-          </a>
-        </li>
-
         <!-- Banco de Imagens -->
         <li class="nav-item">
           <a class="nav-link" href="<?= base_url('images') ?>">
