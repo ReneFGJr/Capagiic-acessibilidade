@@ -30,6 +30,7 @@ if ($userName === '') {
 
 $userName = trim($userName);
 $firstName = $userName !== '' ? explode(' ', $userName)[0] : 'Usuário';
+$headerLevelEnabled = filter_var((string) env('header_level', 'false'), FILTER_VALIDATE_BOOL);
 ?>
 
 <!-- 🔹 Navbar CAPAGIIC - Acessibilidade -->
@@ -80,6 +81,9 @@ $firstName = $userName !== '' ? explode(' ', $userName)[0] : 'Usuário';
             <li><a class="dropdown-item" href="<?= base_url('acessibilidade') ?>">Sobre a acessibilidade do site</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#" onclick="toggleContrast()">Alternar Alto Contraste</a></li>
+            <?php if ($headerLevelEnabled) : ?>
+              <li><a class="dropdown-item" href="#" onclick="toggleHeadingLevels()">Níveis: exibir H1-H6</a></li>
+            <?php endif; ?>
             <li><hr class="dropdown-divider"></li>
             <li><h6 class="dropdown-header text-white-50">Tamanho da fonte</h6></li>
             <li><a class="dropdown-item" href="#" onclick="setFontScale(100)">100%</a></li>
@@ -136,6 +140,18 @@ function applyContrastMode(enabled) {
   document.body.classList.toggle('high-contrast', Boolean(enabled));
 }
 
+function toggleHeadingLevels() {
+  const nextState = !document.body.classList.contains('high-heading-levels');
+  applyHeadingLevels(nextState);
+  setCookie('capagiic_header_level', nextState ? '1' : '0', 365);
+}
+
+function applyHeadingLevels(enabled) {
+  const isEnabled = Boolean(enabled);
+  document.body.classList.toggle('high-heading-levels', isEnabled);
+  syncHeadingLevels(isEnabled);
+}
+
 function setCookie(name, value, days) {
   const expires = new Date();
   expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
@@ -158,6 +174,39 @@ function getCookie(name) {
 function loadSavedContrastMode() {
   const savedContrast = getCookie('capagiic_high_contrast');
   applyContrastMode(savedContrast === '1');
+}
+
+function syncHeadingLevels(enabled) {
+  const headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
+
+  headings.forEach((heading) => {
+    const existingBadge = heading.querySelector(':scope > sup.heading-level-badge');
+
+    if (!enabled) {
+      if (existingBadge) {
+        existingBadge.remove();
+      }
+      return;
+    }
+
+    const level = heading.tagName.substring(1);
+
+    if (!existingBadge) {
+      const badge = document.createElement('sup');
+      badge.className = 'heading-level-badge';
+      badge.setAttribute('aria-hidden', 'true');
+      badge.textContent = 'H' + level;
+      heading.appendChild(badge);
+      return;
+    }
+
+    existingBadge.textContent = 'H' + level;
+  });
+}
+
+function loadSavedHeadingLevels() {
+  const savedHeadingLevels = getCookie('capagiic_header_level');
+  applyHeadingLevels(savedHeadingLevels === '1');
 }
 
 function applyFontScale(scale) {
@@ -189,6 +238,9 @@ function loadSavedFontScale() {
 }
 
 loadSavedContrastMode();
+<?php if ($headerLevelEnabled) : ?>
+loadSavedHeadingLevels();
+<?php endif; ?>
 loadSavedFontScale();
 </script>
 
@@ -407,5 +459,57 @@ loadSavedFontScale();
     background-color: #000 !important;
     color: #fff !important;
     border-color: #fff !important;
+  }
+
+  .high-heading-levels h1,
+  .high-heading-levels h2,
+  .high-heading-levels h3,
+  .high-heading-levels h4,
+  .high-heading-levels h5,
+  .high-heading-levels h6,
+  .high-heading-levels .h1,
+  .high-heading-levels .h2,
+  .high-heading-levels .h3,
+  .high-heading-levels .h4,
+  .high-heading-levels .h5,
+  .high-heading-levels .h6 {
+    display: inline-block;
+    background: #fff3cd !important;
+    color: #0d2f53 !important;
+    border: 2px solid #0d2f53 !important;
+    border-radius: 0.35rem;
+    padding: 0.15rem 0.5rem;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+
+  .high-heading-levels h1 .heading-level-badge,
+  .high-heading-levels h2 .heading-level-badge,
+  .high-heading-levels h3 .heading-level-badge,
+  .high-heading-levels h4 .heading-level-badge,
+  .high-heading-levels h5 .heading-level-badge,
+  .high-heading-levels h6 .heading-level-badge,
+  .high-heading-levels .h1 .heading-level-badge,
+  .high-heading-levels .h2 .heading-level-badge,
+  .high-heading-levels .h3 .heading-level-badge,
+  .high-heading-levels .h4 .heading-level-badge,
+  .high-heading-levels .h5 .heading-level-badge,
+  .high-heading-levels .h6 .heading-level-badge {
+    margin-left: 0.25rem;
+  }
+
+  .high-heading-levels .heading-level-badge {
+    display: inline-block;
+    margin-left: 0.35rem;
+    font-size: 0.65em;
+    line-height: 1;
+    vertical-align: super;
+    background: #ff0 !important;
+    color: #000 !important;
+    border: 1px solid #000 !important;
+    border-radius: 0.25rem;
+    padding: 0 0.25rem;
+    font-weight: 800;
+    box-shadow: none !important;
   }
 </style>
